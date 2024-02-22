@@ -1,0 +1,74 @@
+body {
+     margin: 0;
+     padding: 0;
+     background-color: black !important;
+     color: #00ba00 !important;
+     padding-bottom: .5rem;
+     padding-top: .5rem;
+     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+table {
+	table-layout: fixed;
+}
+
+th, td {
+     font-size: 14px;
+}
+
+#sensorDumpButton, #homeButton {
+     color: #00ba00;
+}
+
+#homePage  {
+     width: 100%;
+     padding: 0;
+   margin: 0;
+}
+
+#dtcContainer {
+     padding-top: 1rem;
+}
+
+#plot {
+  background-color: black;
+}
+
+#speedField {
+     width: 150px;
+}
+
+.left {
+	float: left;
+	margin-right: 100px;
+}
+
+.pad-left {
+	margin-left: 15px;
+}
+
+.pad-right {
+	margin-right: 50px;
+}
+
+.pad-top {
+	padding-top: 20px;
+}
+
+.rpmCell {
+	width: 115px;
+}
+
+.rpm {
+	font-size: 56px;
+	color: #00ba00;
+}
+
+.mph {
+	font-size: 150px;
+	color: #00ba00;
+}
+
+.telemetry-table {
+	margin-left: 15px;
+}
