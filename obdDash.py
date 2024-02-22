@@ -22,7 +22,6 @@ dtcCodesChanged = False
 numTries = 1
 
 def emitDtcCodes():
-    
     global dtcCodesChanged
     dtcCmd = obd.commands.GET_DTC
     response = connection.query(dtcCmd)
@@ -38,6 +37,7 @@ def emitDtcCodes():
         if (currentDtcCodes[i] not in dtcCodes):
             currentDtcCodes.pop(i)
                     
+    # Client emits currentDtcCodes with dtcData as event name
     if dtcCodesChanged:
         sio.emit('dtcData', currentDtcCodes())
         dtcCodesChanged = False
@@ -76,7 +76,7 @@ def emitTelemetry():
         except Exception as ex: #logs any errors
             errorLog = obdUtils.createLogMessage(ERROR, SENSOR_TYPE, type(ex).__name__, ex.args)
             print(errorLog)
-            sio.emit('log', json.dumps(errorLog)) #will only work if exception is unrelated to node server connection
+            sio.emit('log', json.dumps(errorLog)) # will only work if exception is unrelated to node server connection
             continue
 
 connection = obd.OBD()
@@ -88,16 +88,17 @@ while True: #loop until a connection is made with the server instead of immediat
         sio = socketio.Client()
         sio.connect('http://localhost:3000')
         emitTelemetry()
-        break;
+        break
+
     except Exception as ex: 
             errorLog = obdUtils.createLogMessage(ERROR, SENSOR_TYPE, type(ex).__name__, ex.args)
             print(errorLog)
-            sio.emit('log', json.dumps(errorLog)) #will only work if exception is unrelated to node server connection
+            sio.emit('log', json.dumps(errorLog)) # will only work if exception is unrelated to node server connection
             sleep(RETRY_INTERVAL)
             continue
         
 
-
+# The client registers event handler functions with the sio.event
 @sio.event
 def connect():
     print("Connected to node server!")

@@ -4,7 +4,7 @@ sudo killall gpsd node python3 python
 pkill -o chromium
 sudo gpsd /dev/serial0 -F /var/run/gpsd.sock #enable gpsd daemon for helping to parse gps data
 
-cd /home/pi/piObdDashboard #dir of all the apps to run
+cd /home/pi/CarConnectTrial2 #dir of all the apps to run
 
 #start the apps
 /home/pi/.nvm/versions/node/v21.6.2/bin/node index.js & #need to manually specify installation dir if node was installed by nvm
@@ -16,7 +16,7 @@ python3 gpsModule.py &
 python3 airSensor.py &
 python3 obdMisc.py &
 
-cd /home/pi/piDashcam
+# cd /home/pi/piDashcam
 #sudo python3 dashcam.py &
 
 chromium-browser --window-position=0,0    --kiosk --user-data-dir="/home/pi/Documents/Profiles/0" http://localhost:3000 &
