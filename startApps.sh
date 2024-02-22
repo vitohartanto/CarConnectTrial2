@@ -5,7 +5,7 @@ sudo gpsd /dev/serial0 -F /var/run/gpsd.sock
 cd /home/pi/piObdDashboard
 
 #start the apps
-/home/pi/.nvm/versions/node/v21.6.2/bin/node index.js & #need to manually specify installation dir if node was installed by nvm
+/home/pi/.nvm/versions/node/v21.6.1/bin/node index.js & #need to manually specify installation dir if node was installed by nvm
 
 python3 tempMonitor.py &
 python3 obdDash.py &
